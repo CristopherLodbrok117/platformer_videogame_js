@@ -20,6 +20,19 @@ const animate = () => {
     drawCanvas();
     player.update();
     player2.update();
+
+    
+
+    
+    if(keys.KEY_MOVE_RIGHT.pressed ){
+        player.velocity.x = RIGHT_SPEED;
+    }
+
+    if(keys.KEY_MOVE_LEFT.pressed ){
+        player.velocity.x = LEFT_SPEED;
+    }
+    
+        
 }
 
 function drawCanvas() {

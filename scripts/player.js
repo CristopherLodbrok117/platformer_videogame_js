@@ -25,16 +25,45 @@ class Player{
     update() {
         this.draw();
         
+        this.moving(); // Moves hor-vert
+        this.stoping(); // Reduces horizontal speed
 
-        this.position.y += this.velocity.y; // mover
+        this.gravity(); // Reduces vertical velocity
+        
+        
+    }
+
+    moving() {
+        this.position.y += this.velocity.y; // mover verticalmente
+
+        if(this.velocity.x == 0) {
+            return;
+        }
+        
+        this.position.x += this.velocity.x; // mover horizontalmente
+    }
+
+    gravity(){
 
         if((this.position.y + this.height + this.velocity.y) < CANVAS_HEIGHT){ // Sigue cayendo
-            this.velocity.y += GRAVITY; // Aumentar velocidad
+            this.velocity.y += GRAVITY; // Aumentar velocidad de caida
         }
         else{ // Detener caida
             this.velocity.y = 0;
         }
-        
-        console.log(this.position.y);
+    }
+
+    stoping(){
+        if(this.velocity.x == 0) {
+            return;
+        }
+        if(!keys.KEY_MOVE_LEFT.pressed && !keys.KEY_MOVE_RIGHT.pressed){
+            if(this.velocity.x > 0){
+                this.velocity.x += REDUCE_RIGHT_SPEED;
+            }
+            else{
+                this.velocity.x += REDUCE_LEFT_SPEED;
+            }
+        }
     }
 }
