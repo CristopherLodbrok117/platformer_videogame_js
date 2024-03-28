@@ -31,5 +31,5 @@ function drawCanvas() {
 
 
 
-// animate();
+animate();
 // 
