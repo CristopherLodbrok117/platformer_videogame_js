@@ -1,6 +1,6 @@
 const keys = {
     KEY_MOVE_RIGHT : { pressed: false },
-    KEY_MOVE_LEFT : { pressed: false }
+    KEY_MOVE_LEFT : { pressed: false },
 };
 
 // Presionar tecla
@@ -21,7 +21,7 @@ window.addEventListener('keydown', (event) => {
 
         case KEY_JUMP:
             console.log('Jumping');
-            player.velocity.y = JUMP_FORCE;
+            player.jump();
             break;
     }
 });

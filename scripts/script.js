@@ -18,12 +18,15 @@ const animate = () => {
     // Recursive call to achive animation
     window.requestAnimationFrame(animate);
     drawCanvas();
+    
     player.update();
     player2.update();
 
-    
+    movePlayer();    
+}
 
-    
+function movePlayer(){
+
     if(keys.KEY_MOVE_RIGHT.pressed ){
         player.velocity.x = RIGHT_SPEED;
     }
@@ -31,8 +34,6 @@ const animate = () => {
     if(keys.KEY_MOVE_LEFT.pressed ){
         player.velocity.x = LEFT_SPEED;
     }
-    
-        
 }
 
 function drawCanvas() {

@@ -10,6 +10,9 @@ class Player{
         }
         this.width = PLAYER_WIDTH;
         this.height = PLAYER_HEIGHT;
+
+        this.jumped = false;
+        this.doubleJumped = false;
     }
 
     draw(width, height){
@@ -50,15 +53,38 @@ class Player{
         }
         else{ // Detener caida
             this.velocity.y = 0;
+            this.jumped = false;
+            this.doubleJumped = false;
         }
     }
 
+    jump(){
+        if(this.doubleJumped){
+            return;
+        }
+
+        if(this.jumped){ 
+            this.doubleJumped = true; // Presiono brincar en el aire
+        }
+        else{
+            this.jumped = true; // Presiono brincar desde el suelo
+        }
+
+        this.velocity.y = JUMP_FORCE; // Misma fuerza de brinco
+        
+    }
+
     stoping(){
-        if(this.velocity.x == 0) {
+        if(this.velocity.x == 0 || this.jumped) {
             return;
         }
         if(!keys.KEY_MOVE_LEFT.pressed && !keys.KEY_MOVE_RIGHT.pressed){
-            if(this.velocity.x > 0){
+            
+            if(this.velocity.x >= -1 && this.velocity.x <= 1){
+                this.velocity.x = 0;
+            }
+
+            else if(this.velocity.x > 0){
                 this.velocity.x += REDUCE_RIGHT_SPEED;
             }
             else{
@@ -66,4 +92,6 @@ class Player{
             }
         }
     }
+
+    
 }
