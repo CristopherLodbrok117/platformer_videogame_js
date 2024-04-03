@@ -2,7 +2,7 @@
 const CANVAS_WIDTH = window.innerWidth - 50;
 const CANVAS_HEIGHT = window.innerHeight - 50;
 const CANVAS_BG_COLOR = '#333';
-
+const BACKGROUND_SCALE = 4;
 // PLAYER
 const PLAYER_WIDTH = 100;
 const PLAYER_HEIGHT = 100;
@@ -24,6 +24,9 @@ const REDUCE_LEFT_SPEED = 0.3;
 const KEY_MOVE_RIGHT = 'd';
 const KEY_MOVE_LEFT = 'a';
 const KEY_JUMP = ' ';
+
+// URL
+const URL_BACKGROUND = "../img/background.png";
 
 
 
